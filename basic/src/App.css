@@ -33,3 +33,12 @@
   /* 텍스트 대문자로 */
   font-weight: bold;
 }
+
+.avatar {
+  position: relative;
+  /* 가장 근접한 부모로 만들기 위해 position relative 속성 추가 */
+  margin: auto;
+  /* 중간 정렬 */
+  width: 200px;
+  height: 200px;
+}
