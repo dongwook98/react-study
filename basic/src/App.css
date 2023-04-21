@@ -1,38 +1,35 @@
-.App {
+.orange {
+  color: orange;
+}
+
+.profile {
+  width: 300px;
   text-align: center;
+  padding: 1rem;
+  background-color: #ebebeb;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.75);
+  margin-bottom: 1rem;
+  -webkit-box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.75);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.new {
+  position: absolute;
+  /* position absolute면 가장 근접한 static 포지션이 아닌 부모태그에서 움직임  */
+  left: 75%;
+  top: 15%;
+  background-color: aquamarine;
+  padding: 0.2rem 0.5rem;
+  /* 위아래, 왼쪽오른쪽 */
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  /* 텍스트 대문자로 */
+  font-weight: bold;
 }
