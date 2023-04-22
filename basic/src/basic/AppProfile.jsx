@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import Profile from './components/Profile';
-import Avatar from './components/Avatar';
+import Profile from './basic/components/Profile';
+import Avatar from './basic/components/Avatar';
 
 export default function AppProfile() {
   // 고차함수(함수 리턴)
