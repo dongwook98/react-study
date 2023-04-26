@@ -23,7 +23,10 @@ export default function AppMentor() {
           const name = prompt(`what's your mentor's name?`);
           setPerson((prev) => ({
             ...prev,
-            mentor: { ...prev.mentor, name: name }, // name: name -> name으로 축약가능
+            mentor: {
+              ...prev.mentor,
+              name: name,
+            },
           }));
         }}
       >
