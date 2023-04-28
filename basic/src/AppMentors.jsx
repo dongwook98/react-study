@@ -1,42 +1,30 @@
 import React from 'react';
+import { useReducer } from 'react';
 import { useState } from 'react';
+import personReducer from './reducer/person-reducer';
 
 export default function AppMentors() {
-  const [person, setPerson] = useState(initialPerson);
+  // const [person, setPerson] = useState(initialPerson);
+  const [person, dispatch] = useReducer(personReducer, initialPerson);
 
   // 멘토 수정
-  const handleChange = () => {
+  const handleUpdate = () => {
     const prev = prompt('누구의 이름을 바꾸고 싶은가요?');
     const current = prompt('이름을 무엇으로 바꾸고 싶은가요?');
-    setPerson((person) => ({
-      ...person,
-      mentors: person.mentors.map((mentor) => {
-        if (mentor.name === prev) {
-          return { ...mentor, name: current };
-        }
-        return mentor;
-      }),
-    }));
+    dispatch({ type: 'updated', prev, current });
   };
 
   // 멘토 추가
   const handleAdd = () => {
     const name = prompt('추가할 멘토의 이름을 적어주세요.');
     const title = prompt('추가할 멘토의 직무를 적어주세요.');
-    setPerson((person) => ({
-      ...person,
-      mentors: [...person.mentors, { name, title }],
-    }));
+    dispatch({ type: 'added', name, title });
   };
 
   // 멘토 삭제
   const handleDelete = () => {
     const name = prompt('삭제할 멘토의 이름을 적어주세요.');
-
-    setPerson((person) => ({
-      ...person,
-      mentors: person.mentors.filter((mentor) => mentor.name !== name),
-    }));
+    dispatch({ type: 'deleted', name });
   };
 
   return (
@@ -52,7 +40,7 @@ export default function AppMentors() {
           </li>
         ))}
       </ul>
-      <button onClick={handleChange}>멘토의 이름을 바꾸기</button>
+      <button onClick={handleUpdate}>멘토의 이름을 바꾸기</button>
       <button onClick={handleAdd}>멘토 추가하기</button>
       <button onClick={handleDelete}>멘토 삭제하기</button>
     </div>
