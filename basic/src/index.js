@@ -6,11 +6,12 @@ import AppXY from './AppXY';
 import AppMentors from './AppMentors';
 import AppMentor from './AppMentor';
 import AppForm from './AppForm';
+import AppWrap from './AppWrap';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <AppForm />
+  <AppWrap />
   // </React.StrictMode>
 );
 
