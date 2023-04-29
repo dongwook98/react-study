@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { useEffect } from 'react';
+import { useCallback } from 'react';
+import { useMemo } from 'react';
 import { useReducer } from 'react';
 import personReducer from './reducer/person-reducer';
 
@@ -7,24 +10,24 @@ export default function AppMentorsButton() {
   const [person, dispatch] = useReducer(personReducer, initialPerson);
 
   // 멘토 수정
-  const handleUpdate = () => {
+  const handleUpdate = useCallback(() => {
     const prev = prompt('누구의 이름을 바꾸고 싶은가요?');
     const current = prompt('이름을 무엇으로 바꾸고 싶은가요?');
     dispatch({ type: 'updated', prev, current });
-  };
+  }, []);
 
   // 멘토 추가
-  const handleAdd = () => {
+  const handleAdd = useCallback(() => {
     const name = prompt('추가할 멘토의 이름을 적어주세요.');
     const title = prompt('추가할 멘토의 직무를 적어주세요.');
     dispatch({ type: 'added', name, title });
-  };
+  }, []);
 
   // 멘토 삭제
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     const name = prompt('삭제할 멘토의 이름을 적어주세요.');
     dispatch({ type: 'deleted', name });
-  };
+  }, []);
 
   return (
     <div>
@@ -46,7 +49,7 @@ export default function AppMentorsButton() {
   );
 }
 
-function Button({ text, onClick }) {
+const Button = memo(({ text, onClick }) => {
   console.log('Button', text, 're-rendering 😁');
   // Button 멘토 이름 바꾸기 re-rendering 😁
   // Button 멘토 추가하기 re-rendering 😁
@@ -58,6 +61,11 @@ function Button({ text, onClick }) {
 
   // 하지만 Button 컴포넌트는 수많은 자식 컴포넌트도 가지고 있지 않고, 무거운 작업을 하고 있지 않고 있기 때문에 그렇게 큰 상관은 없다!
   // 만약 컴포넌트가 수많은 자식 컴포넌트를 가지고 있고, 무거운 일을 하고, 다시 호출되는것 자체가 비효율적인 곳에서는 꼭 성능개선을 해줘야한다!!
+
+  const result = useMemo(() => caculateSomething(), []); // 무거운 작업
+
+  // useEffect(() => caculateSomething(), []); // 무거운 작업
+
   return (
     <button
       onClick={onClick}
@@ -68,9 +76,17 @@ function Button({ text, onClick }) {
         margin: '0.4rem',
       }}
     >
-      {text}
+      {`${text} ${result}`}
     </button>
   );
+});
+
+// 무거운 작업! 🪨
+function caculateSomething() {
+  for (let i = 0; i < 10000; i++) {
+    console.log('🔥');
+  }
+  return 10;
 }
 
 const initialPerson = {
