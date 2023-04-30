@@ -1,7 +1,10 @@
 import React from 'react';
 import { useContext } from 'react';
 import './AppTheme.css';
-import { DarkModeContext, DarkModeProvider } from './context/DarkModeContext';
+import {
+  DarkModeContext,
+  DarkModeProvider,
+} from './deepDive/context/DarkModeContext';
 
 export default function AppTheme() {
   return (

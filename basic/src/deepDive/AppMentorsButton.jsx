@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useCallback } from 'react';
 import { useMemo } from 'react';
 import { useReducer } from 'react';
-import personReducer from './reducer/person-reducer';
+import personReducer from './deepDive/reducer/person-reducer';
 
 export default function AppMentorsButton() {
   // const [person, setPerson] = useState(initialPerson);

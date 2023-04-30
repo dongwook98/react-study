@@ -1,7 +1,7 @@
 import React from 'react';
 import { useReducer } from 'react';
 import { useState } from 'react';
-import personReducer from './reducer/person-reducer';
+import personReducer from './deepDive/reducer/person-reducer';
 
 export default function AppMentors() {
   // const [person, setPerson] = useState(initialPerson);

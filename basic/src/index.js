@@ -7,7 +7,7 @@ import AppMentors from './AppMentors';
 import AppMentor from './AppMentor';
 import AppForm from './AppForm';
 import AppWrap from './AppWrap';
-import AppCard from './AppCard';
+import AppCard from './deepDive/AppCard';
 import AppTheme from './AppTheme';
 import AppMentorsButton from './AppMentorsButton';
 import AppProduct from './basic/AppProducts';

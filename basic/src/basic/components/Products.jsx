@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import useProducts from '../../hooks/use-products';
+import useProducts from '../../deepDive/hooks/use-products';
 
 export default function Products() {
   const [count, setCount] = useState(0);
