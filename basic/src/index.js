@@ -2,21 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import AppXY from './AppXY';
-import AppMentors from './AppMentors';
-import AppMentor from './AppMentor';
-import AppForm from './AppForm';
-import AppWrap from './AppWrap';
-import AppCard from './deepDive/AppCard';
-import AppTheme from './AppTheme';
-import AppMentorsButton from './AppMentorsButton';
-import AppProduct from './basic/AppProducts';
-import AppClass from './AppClass';
+// import AppJSX from './basic/AppJSX';
+// import AppProfile from './basic/AppProfile';
+import AppCounter from './basic/AppCounter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <AppClass />
+  <AppCounter />
   // </React.StrictMode>
 );
 

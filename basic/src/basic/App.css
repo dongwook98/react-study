@@ -6,7 +6,7 @@
   width: 300px;
   text-align: center;
   padding: 1rem;
-  background-color: #ebebeb;
+  background-color: cornflowerblue;
   border-radius: 20px;
   box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.75);
   margin-bottom: 1rem;
@@ -21,24 +21,24 @@
 }
 
 .new {
-  position: absolute;
   /* position absolute면 가장 근접한 static 포지션이 아닌 부모태그에서 움직임  */
+  position: absolute;
   left: 75%;
   top: 15%;
   background-color: aquamarine;
-  padding: 0.2rem 0.5rem;
   /* 위아래, 왼쪽오른쪽 */
+  padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
-  text-transform: uppercase;
   /* 텍스트 대문자로 */
+  text-transform: uppercase;
   font-weight: bold;
 }
 
 .avatar {
-  position: relative;
   /* 가장 근접한 부모로 만들기 위해 position relative 속성 추가 */
-  margin: auto;
+  position: relative;
   /* 중간 정렬 */
+  margin: auto;
   width: 200px;
   height: 200px;
 }
