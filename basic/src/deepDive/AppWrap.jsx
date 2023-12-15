@@ -1,5 +1,10 @@
 import React from 'react';
-
+/**
+ * 컴포넌트 재사용1 🍯
+ *
+ * Wrap(High Order) 컴포넌트를 사용하면 Navbar 컴포넌트의 재사용성이 좋아진다.
+ * 배경이 노란색인거는 그대로 쓰고 싶은데 안에 컨텐츠만 바꿔가면서 쓰고 싶을때 사용하면 좋다.
+ */
 export default function AppWrap() {
   return (
     <div>
@@ -9,6 +14,10 @@ export default function AppWrap() {
           name='Bob'
           size={200}
         />
+        <p>안녕하세요!</p>
+      </Navbar>
+
+      <Navbar>
         <p>안녕하세요!</p>
       </Navbar>
 
@@ -24,7 +33,7 @@ export default function AppWrap() {
 }
 
 function Navbar({ children }) {
-  return <header style={{ background: 'skyblue' }}>{children}</header>;
+  return <header style={{ background: 'yellow' }}>{children}</header>;
 }
 
 function Avatar({ image, name, size }) {
