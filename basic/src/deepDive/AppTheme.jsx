@@ -1,10 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import './AppTheme.css';
-import {
-  DarkModeContext,
-  DarkModeProvider,
-} from './deepDive/context/DarkModeContext';
+import { DarkModeProvider, DarkModeContext } from './context/DarkModeContext';
 
 export default function AppTheme() {
   return (
@@ -53,12 +50,20 @@ function Products() {
 }
 
 function ProductDetail() {
+  // 만든 Context 사용
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
     <div>
       Product Detail
       <p>
-        DarkMode: <span>{darkMode.toString()}</span>
+        DarkMode:
+        {darkMode ? (
+          <span style={{ backgroundColor: 'black', color: 'white' }}>
+            Dark Mode
+          </span>
+        ) : (
+          <span>Light Mode</span>
+        )}
       </p>
       <button
         onClick={() => {
