@@ -1,13 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 
+// 중첩 객체 상태 관리
 export default function AppMentor() {
   const [person, setPerson] = useState({
     name: '동욱',
-    title: '개발자',
+    title: '주니어 개발자',
     mentor: {
       name: '제로초',
-      title: '시니어개발자',
+      title: '시니어 개발자',
     },
   });
   return (
@@ -25,7 +26,7 @@ export default function AppMentor() {
             ...prev,
             mentor: {
               ...prev.mentor,
-              name: name,
+              name,
             },
           }));
         }}
@@ -37,7 +38,7 @@ export default function AppMentor() {
           const title = prompt(`what's your mentor's name?`);
           setPerson((prev) => ({
             ...prev,
-            mentor: { ...prev.mentor, title: title },
+            mentor: { ...prev.mentor, title },
           }));
         }}
       >
