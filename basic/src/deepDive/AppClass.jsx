@@ -1,5 +1,11 @@
 import React from 'react';
-import Counter from './basic/components/Counter';
+import Counter from '../basic/components/Counter';
+
+/**
+ * 클래스 컴포넌트의 장점
+ * 컴포넌트의 상태가 변경되어도 render 함수만 실행되기 때문에 함수 컴포넌트보다 효율적이다.
+ * render 함수만 실행해서 class의 멤버 변수들이 초기화되지않음
+ */
 
 export default class AppClass extends React.Component {
   state = { count: 0 };
