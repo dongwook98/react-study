@@ -14,12 +14,14 @@ import reportWebVitals from './reportWebVitals';
 // import AppWrap from './deepDive/AppWrap'; // HCO 컴포넌트, children 학습
 // import AppCard from './deepDive/AppCard'; // HCO 컴포넌트, children 학습
 // import AppTheme from './deepDive/AppTheme'; // ContextAPI 학습
-import AppMentorsButton from './deepDive/AppMentorsButton'; // useMemo, useCallback, memo (성능 개선)
+// import AppMentorsButton from './deepDive/AppMentorsButton'; // useMemo, useCallback, memo (성능 개선)
+// import AppProducts from './basic/AppProducts'; // 로딩, 에러 상태(자주 쓰이는 네트워크 통신 패턴), 커스텀 훅 학습
+import AppClass from './deepDive/AppClass'; // Class 컴포넌트 학습
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <AppMentorsButton />
+  <AppClass />
   // </React.StrictMode>
 );
 
