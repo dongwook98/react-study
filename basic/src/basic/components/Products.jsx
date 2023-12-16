@@ -11,6 +11,8 @@ export default function Products() {
   };
 
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(undefined);
 
   /**
    * useEffect의 사용방법
@@ -20,11 +22,20 @@ export default function Products() {
   // Products 컴포넌트가 마운트 될 때 딱 한번만 실행
   // 만약 useEffect를 감싸지 않는다면 무한루프..
   useEffect(() => {
+    setLoading(true);
+    setError(undefined);
     fetch(`data/${checked ? 'sale_' : ''}products.json`)
       .then((res) => res.json())
       .then((data) => {
         console.log('백엔드에서 데이터를 받아옴');
         setProducts(data);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError('에러 발생');
+      })
+      .finally(() => {
+        setLoading(false);
       });
     return () => {
       console.log('깨끗하게 청소하는 일들을 합니다.');
@@ -32,11 +43,11 @@ export default function Products() {
   }, [checked]); // checked가 변경될때마다 useEffect가 다시 실행
 
   // 위 useEffect 코드를 useProducts라는 커스텀 훅으로 묶어줌
-  // const [isLoding, isError, products] = useProducts({ salesOnly: checked });
+  // const [loading, error, products] = useProducts({ salesOnly: checked });
 
-  // if (isLoding) return <p>Loding...!!</p>;
+  if (loading) return <p>로딩 중...!!</p>;
 
-  // if (isError) return <p>{isError}</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <>
