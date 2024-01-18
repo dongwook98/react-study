@@ -1,61 +1,67 @@
 import React from 'react';
-// import { useReducer } from 'react';
-import { useState } from 'react';
-// import personReducer from './reducer/person-reducer';
+import { useReducer } from 'react';
+// import { useState } from 'react';
+import personReducer from './reducer/person-reducer';
 
 export default function AppMentors() {
-  /**
-   * 리액트 불변성
-   *
+  /** 리액트 불변성
    * 리액트에서 사용하는 모든 State는 불변성을 유지해야한다.
    * 리액트에서 사용하는 상태에 객체나 배열의 내부 내용을 직접적으로 변경하면 안되고,
    * 변경이 발생한다면 배열과 객체의 전체적인 껍데기를 새로 만들어서 업데이트 해줘야 한다.
+   * 왜냐하면 객체타입은 참조값을 만들고 변수는 그 참조값을 가르키기 때문
    */
-  const [person, setPerson] = useState(initialPerson);
-  /**
-   * useReducer
-   *
-   * useReducer를 사용하면 컴포넌트 내부에 필요한 로직들만 간직할 수 있고,
+  // const [person, setPerson] = useState(initialPerson);
+
+  /** useReducer
+   * useReducer를 사용하면 상태 변경 로직들을 컴포넌트에서 분리 할 수 있기 때문에
+   * 컴포넌트 내부에 필요한 로직들만 간직할 수 있고
    * 다른 컴포넌트에서도 동일한 로직이 필요하다면 그 로직을 재사용도 할 수 있다.
+   *
+   * dispatch를 호출하면 useReducer에 등록해둔 personReducer 함수를 호출하는데
+   * 호출할때는 기존의 person이라는 상태와 함께 우리가 dispatch에 전달한 action 객체를
+   * personReducer의 두번째 인자로 전달해준다.
+   *
+   * 전달해준 action.type에 따라서 상태 변경 로직들을 거치고 새로운 상태를 리턴해줌
+   * 그러면 useReducer가 자동으로 person State에 업데이트 해줌
    */
-  // const [person, dispatch] = useReducer(personReducer, initialPerson);
+  const [person, dispatch] = useReducer(personReducer, initialPerson);
 
   // 멘토 이름 수정
   const handleUpdate = () => {
     const prev = prompt('누구의 이름을 바꾸고 싶은가요?');
     const current = prompt('이름을 무엇으로 바꾸고 싶은가요?');
-    setPerson((person) => ({
-      ...person,
-      // map을 사용해서 새로운 mentors를 반환
-      mentors: person.mentors.map((mentor) => {
-        if (mentor.name === prev) {
-          return { ...mentor, name: current };
-        }
-        return mentor;
-      }),
-    }));
-    // dispatch({ type: 'updated', prev, current });
+    // setPerson((person) => ({
+    //   ...person,
+    //   // map을 사용해서 새로운 배열을 반환
+    //   mentors: person.mentors.map((mentor) => {
+    //     if (mentor.name === prev) {
+    //       return { ...mentor, name: current };
+    //     }
+    //     return mentor;
+    //   }),
+    // }));
+    dispatch({ type: 'updated', prev, current });
   };
 
   // 멘토 추가
   const handleAdd = () => {
     const name = prompt('추가할 멘토의 이름을 적어주세요.');
     const title = prompt('추가할 멘토의 직무를 적어주세요.');
-    // dispatch({ type: 'added', name, title });
-    setPerson((person) => ({
-      ...person,
-      mentors: [{ name, title }, ...person.mentors],
-    }));
+    // setPerson((person) => ({
+    //   ...person,
+    //   mentors: [{ name, title }, ...person.mentors],
+    // }));
+    dispatch({ type: 'added', name, title });
   };
 
   // 멘토 삭제
   const handleDelete = () => {
     const name = prompt('삭제할 멘토의 이름을 적어주세요.');
-    // dispatch({ type: 'deleted', name });
-    setPerson((person) => ({
-      ...person,
-      mentors: person.mentors.filter((mentor) => mentor.name !== name),
-    }));
+    // setPerson((person) => ({
+    //   ...person,
+    //   mentors: person.mentors.filter((mentor) => mentor.name !== name),
+    // }));
+    dispatch({ type: 'deleted', name });
   };
 
   return (

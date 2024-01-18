@@ -1,3 +1,4 @@
+// dispatch할때 인자를 받아옴
 export default function personReducer(person, action) {
   switch (action.type) {
     case 'updated': {
@@ -26,7 +27,7 @@ export default function personReducer(person, action) {
       };
     }
     default: {
-      throw Error(`알수없는 액션 타입이다: ${action.type}`);
+      throw new Error(`알수없는 액션 타입이다: ${action.type}`);
     }
   }
 }
