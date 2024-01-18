@@ -40,7 +40,7 @@ export default class AppClass extends React.Component {
 }
 
 // 클래스 컴포넌트의 장점
-// 함수형 컴포넌트는 무언가 변경이 될때마다 함수 전체가 다 호출되니까 리액트에서 제공하는 useState나 useCallback useMemo와 같은 훅을 사용함
+// 함수 컴포넌트는 무언가 변경이 될때마다 함수 전체가 다 호출되니까 리액트에서 제공하는 useState나 useCallback useMemo와 같은 훅을 사용함
 // 상태가 변경될 때 마다 render 함수만 호출이 된다. useCallback이나 useMemo와 같은 별도의 처리를 해주지 않아도 된다.
 // 클래스의 객체지향 프로그래밍으로 클라이언트 사이드에서 복잡한 일을 해야한다면 상속을 이용해서 무언가를 해야한다면 클래스를 요긴하게 쓸 수 있다.
 // 그러나 지금 대세는 함수형 컴포넌트로 가고 있는 시대이다. 함수가 전부 호출되어서 성능이 살짝 걱정되는 부분이 있긴하지만 워낙 useEffect, useCallback, useMemo 와 같은 훅이 잘 되어있기 때문에

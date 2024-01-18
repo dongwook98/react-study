@@ -17,7 +17,7 @@ export function DarkModeProvider({ children }) {
     // 리턴할때 Context에 있는 Provider를 쓰는데 이걸 외부에서 편하기 쓰기 위해 DarkModeProvider, 우산을 만들어주는 것
     <DarkModeContext.Provider
       // 글로벌하게 상태 관리할 데이터와 그걸 처리하고 싶은 함수들을 하위에 있는 children, 자식 요소들이 이용하게 하려면 value에다가 지정해주면 된다.
-      value={{ darkMode: darkMode, toggleDarkMode: toggleDarkMode }} // darkMode:darkMode => darkMode 생략가능!
+      value={{ darkMode, toggleDarkMode }}
     >
       {children}
     </DarkModeContext.Provider>

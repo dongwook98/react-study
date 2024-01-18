@@ -2,9 +2,13 @@ import React from 'react';
 import { useImmer } from 'use-immer';
 
 export default function AppMentorsImmer() {
+  /**
+   * Immer의 동작원리는 우리가 객체를 수정하면 Immer 내부적으로 새로운 객체를 만들어서
+   * 우리가 수정한 부분만 수정해서 새로운 객체를 리턴해준다.
+   * 그래서 우리는 불변성을 신경쓰지않고도 코딩 할 수 있다.
+   */
   const [person, updatePerson] = useImmer(initialPerson);
 
-  // 멘토 이름 수정
   const handleUpdate = () => {
     const prev = prompt('누구의 이름을 바꾸고 싶은가요?');
     const current = prompt('이름을 무엇으로 바꾸고 싶은가요?');
@@ -14,7 +18,6 @@ export default function AppMentorsImmer() {
     });
   };
 
-  // 멘토 추가
   const handleAdd = () => {
     const name = prompt('추가할 멘토의 이름을 적어주세요.');
     const title = prompt('추가할 멘토의 직무를 적어주세요.');
@@ -23,7 +26,6 @@ export default function AppMentorsImmer() {
     });
   };
 
-  // 멘토 삭제
   const handleDelete = () => {
     const name = prompt('삭제할 멘토의 이름을 적어주세요.');
     updatePerson((person) => {
