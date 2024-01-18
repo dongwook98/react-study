@@ -25,9 +25,9 @@ function AppJSX() {
       <h2>hello!</h2>
       <p>{name}</p>
       <ul>
-        {list.map((item, i) => {
-          return <li key={i}>{item}</li>;
-        })}
+        {list.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
       </ul>
       <img
         style={{ width: '200px', height: 100 + 100 + 'px' }}

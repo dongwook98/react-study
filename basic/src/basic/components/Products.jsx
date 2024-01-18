@@ -19,8 +19,7 @@ export default function Products() {
    * 1) 컴포넌트가 보여질때 처음으로 네트워크 통신을 해야되거나 무거운 일을 해야할 때
    * 2) 특정한 무언가가 변경될때마다 네트워크 통신을 해야되거나 무거운 일을 해야할 때
    */
-  // Products 컴포넌트가 마운트 될 때 딱 한번만 실행
-  // 만약 useEffect를 감싸지 않는다면 무한루프..
+  // 디펜던시 배열 [] : Products 컴포넌트가 마운트 될 때 딱 한번만 실행, 만약 useEffect를 감싸지 않는다면 무한루프..
   useEffect(() => {
     setLoading(true);
     setError(undefined);
@@ -37,12 +36,15 @@ export default function Products() {
       .finally(() => {
         setLoading(false);
       });
+
+    // 컴포넌트가 없어졌을때 무언가 정리해야한다면 return에 콜백함수 전달
+    // 이 콜백함수는 컴포넌트가 언마운트될 때 호출됨
     return () => {
       console.log('깨끗하게 청소하는 일들을 합니다.');
     };
   }, [checked]); // checked가 변경될때마다 useEffect가 다시 실행
 
-  // 위 useEffect 코드를 useProducts라는 커스텀 훅으로 묶어줌
+  // 위 useEffect 코드와 products State, loading State, error State를 useProducts라는 커스텀 훅으로 묶어줌
   // const [loading, error, products] = useProducts({ salesOnly: checked });
 
   if (loading) return <p>로딩 중...!!</p>;
@@ -54,7 +56,7 @@ export default function Products() {
       <input
         id='checkbox'
         type='checkbox'
-        value={checked}
+        checked={checked}
         onChange={handleChange}
       />
       <label htmlFor='checkbox'>Show Only Hot Sale🔥</label>

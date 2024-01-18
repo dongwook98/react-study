@@ -10,6 +10,7 @@ export default function AppCounter() {
   const handleClick = () => {
     setTotalCount((prev) => prev + 1);
   };
+
   return (
     <div className='container'>
       <div className='banner'>
