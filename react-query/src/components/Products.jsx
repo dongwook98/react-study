@@ -29,6 +29,7 @@ export default function Products() {
       );
     },
     {
+      // 얼마나 자주 업데이트 되는 데이터냐에 따라서 이런 민감도를 잘 파악해서 staleTime을 적절히 지정해줘야 한다.
       staleTime: 1000 * 60 * 5,
     }
   );
