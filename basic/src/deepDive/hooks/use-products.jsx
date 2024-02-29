@@ -10,7 +10,6 @@ import { useState, useEffect } from 'react';
  * useState의 로직을 사용하는것뿐이지 데이터를 공유하고 있지는 않다.
  * 이것처럼 커스텀훅도 로직이 공유되는거지 데이터 자체가 공유되는건 아니다.
  */
-
 export default function useProducts({ salesOnly }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
