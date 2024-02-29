@@ -1,30 +1,31 @@
 import React from 'react';
 import { useState } from 'react';
 
-// 중첩 객체 상태 관리
 export default function AppMentor() {
+  // 중첩 객체 상태 관리
   const [person, setPerson] = useState({
     name: '동욱',
-    title: '주니어 개발자',
+    title: '주니어 프론트엔드 개발자',
     mentor: {
-      name: '제로초',
-      title: '시니어 개발자',
+      name: '엘리',
+      title: '시니어 프론트엔드 개발자',
     },
   });
+
   return (
     <div>
       <h1>
-        {person.name}는 {person.title}
+        {person.name}은 {person.title}
       </h1>
       <p>
-        {person.name}멘토는 {person.mentor.name} ({person.mentor.title})
+        {person.name}의 멘토는 {person.mentor.name} ({person.mentor.title})
       </p>
       <button
         onClick={() => {
-          const name = prompt(`what's your mentor's name?`);
-          setPerson((prev) => ({
-            ...prev,
-            mentor: { ...prev.mentor, name },
+          const promptName = prompt('바꾸실 멘토의 이름을 입력해주세요.');
+          setPerson((person) => ({
+            ...person,
+            mentor: { ...person.mentor, name: promptName },
           }));
         }}
       >
@@ -32,10 +33,10 @@ export default function AppMentor() {
       </button>
       <button
         onClick={() => {
-          const title = prompt(`what's your mentor's name?`);
-          setPerson((prev) => ({
-            ...prev,
-            mentor: { ...prev.mentor, title },
+          const promptTitle = prompt(`바꾸실 멘토의 타이틀을 입력해주세요.`);
+          setPerson((person) => ({
+            ...person,
+            mentor: { ...person.mentor, title: promptTitle },
           }));
         }}
       >

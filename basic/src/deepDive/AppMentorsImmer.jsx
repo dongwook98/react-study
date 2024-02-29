@@ -1,11 +1,26 @@
 import React from 'react';
 import { useImmer } from 'use-immer';
 
+const initialPerson = {
+  name: '동욱',
+  title: '주니어 프론트엔드 개발자',
+  mentors: [
+    {
+      name: '제로초',
+      title: '백엔드 개발자',
+    },
+    {
+      name: '엘리',
+      title: '프론트엔드 개발자',
+    },
+  ],
+};
+
 export default function AppMentorsImmer() {
   /**
    * Immer의 동작원리는 우리가 객체를 수정하면 Immer 내부적으로 새로운 객체를 만들어서
    * 우리가 수정한 부분만 수정해서 새로운 객체를 리턴해준다.
-   * 그래서 우리는 불변성을 신경쓰지않고도 코딩 할 수 있다.
+   * 그래서 우리는 불변성을 신경쓰지않고 코딩 할 수 있다.
    */
   const [person, updatePerson] = useImmer(initialPerson);
 
@@ -13,7 +28,7 @@ export default function AppMentorsImmer() {
     const prev = prompt('누구의 이름을 바꾸고 싶은가요?');
     const current = prompt('이름을 무엇으로 바꾸고 싶은가요?');
     updatePerson((person) => {
-      const mentor = person.mentors.find((m) => m.name === prev);
+      const mentor = person.mentors.find((mentor) => mentor.name === prev);
       mentor.name = current;
     });
   };
@@ -29,7 +44,7 @@ export default function AppMentorsImmer() {
   const handleDelete = () => {
     const name = prompt('삭제할 멘토의 이름을 적어주세요.');
     updatePerson((person) => {
-      const index = person.mentors.findIndex((m) => m.name === name);
+      const index = person.mentors.findIndex((mentor) => mentor.name === name);
       person.mentors.splice(index, 1);
     });
   };
@@ -37,7 +52,7 @@ export default function AppMentorsImmer() {
   return (
     <div>
       <h1>
-        {person.name}는 {person.title}
+        {person.name}은 {person.title}
       </h1>
       <p>{person.name}의 멘토는:</p>
       <ul>
@@ -53,18 +68,3 @@ export default function AppMentorsImmer() {
     </div>
   );
 }
-
-const initialPerson = {
-  name: '동욱',
-  title: '개발자',
-  mentors: [
-    {
-      name: '제로초',
-      title: '풀스택 개발자',
-    },
-    {
-      name: '엘리',
-      title: '프론트엔드 개발자',
-    },
-  ],
-};

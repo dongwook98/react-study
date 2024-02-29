@@ -5,6 +5,7 @@ import { DarkModeProvider, DarkModeContext } from './context/DarkModeContext';
 
 export default function AppTheme() {
   return (
+    // 다크모드는 어플리케이션 전반적으로 이용하기 때문에 전체적으로 감싸줌
     <DarkModeProvider>
       <Header />
       <Main />

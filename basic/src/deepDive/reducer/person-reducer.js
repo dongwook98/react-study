@@ -1,4 +1,5 @@
 // dispatch할때 인자를 받아옴
+// reducer: 기존 state와 액션을 받아와서 새로운 상태를 리턴
 export default function personReducer(person, action) {
   switch (action.type) {
     case 'updated': {

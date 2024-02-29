@@ -3,6 +3,8 @@ import React from 'react';
 /**
  * 컴포넌트의 재사용2 🍯
  * 자식 컴포넌트를 감싸는 한단계 높은 부모 컴포넌트를 만들면 컴포넌트를 조금 더 효율성 있게 재사용 가능
+ *
+ * 예를 들어, Section, Article 컴포넌트 구성 가능
  */
 export default function AppCard() {
   return (
